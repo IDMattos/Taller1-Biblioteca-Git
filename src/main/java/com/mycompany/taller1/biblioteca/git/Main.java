@@ -82,4 +82,28 @@ public class Main {
 
     System.out.println("Client not found.");
 }
+public static void deleteClient() {
+    System.out.print("Enter client ID: ");
+    int id = sc.nextInt();
+    sc.nextLine();
+
+    for (int i = 0; i < clients.size(); i++) {
+        if (clients.get(i).getId() == id) {
+
+            System.out.print("Are you sure you want to delete this client? (yes/no): ");
+            String confirmation = sc.nextLine();
+
+            if (confirmation.equalsIgnoreCase("yes")) {
+                clients.remove(i);
+                System.out.println("Client deleted successfully.");
+            } else {
+                System.out.println("Deletion cancelled.");
+            }
+
+            return;
+        }
+    }
+
+    System.out.println("Client not found.");
+}
 }
