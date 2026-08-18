@@ -164,4 +164,32 @@ public class Main {
 
         System.out.println("Book not found.");
     }
+    public static void updateBook() {
+    System.out.print("Enter book code: ");
+    String code = sc.nextLine();
+
+    for (Book book : books) {
+        if (book.getCode().equalsIgnoreCase(code)) {
+
+            System.out.print("Enter new title: ");
+            book.setTitle(sc.nextLine());
+
+            System.out.print("Enter new publication year: ");
+            book.setPublicationYear(sc.nextLine());
+
+            System.out.print("Enter new author: ");
+            book.setAuthor(sc.nextLine());
+
+            System.out.print("Is the book available? (true/false): ");
+            boolean available = sc.nextBoolean();
+            sc.nextLine();
+            book.setAvailable(available);
+
+            System.out.println("Book updated successfully.");
+            return;
+        }
+    }
+
+    System.out.println("Book not found.");
+}
 }
