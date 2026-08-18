@@ -32,4 +32,13 @@ public class Main {
 
         System.out.println("Client created successfully.");
     }
+    public static void listClients() {
+    for (Client client : clients) {
+        System.out.println("ID: " + client.getId());
+        System.out.println("Name: " + client.getName());
+        System.out.println("Phone: " + client.getPhone());
+        System.out.println("Email: " + client.getEmail());
+        System.out.println("--------------------");
+    }
+}
 }
