@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();   
     static Scanner sc = new Scanner(System.in);
+   
 
     public static void main(String[] args) {
         // Aquí irá el menú
@@ -105,5 +107,28 @@ public static void deleteClient() {
     }
 
     System.out.println("Client not found.");
+}
+public static void createBook() {
+    System.out.print("Enter book code: ");
+    String code = sc.nextLine();
+
+    System.out.print("Enter book title: ");
+    String title = sc.nextLine();
+
+    System.out.print("Enter publication year: ");
+    String publicationYear = sc.nextLine();
+
+    System.out.print("Enter book author: ");
+    String author = sc.nextLine();
+
+    System.out.print("Is the book available? (true/false): ");
+    boolean available = sc.nextBoolean();
+    sc.nextLine();
+
+    Book book = new Book(code, title, publicationYear, author, available);
+
+    books.add(book);
+
+    System.out.println("Book created successfully.");
 }
 }
