@@ -39,6 +39,23 @@ public class Main {
         System.out.println("Phone: " + client.getPhone());
         System.out.println("Email: " + client.getEmail());
         System.out.println("--------------------");
+    }   
+}
+    public static void searchClient() {
+    System.out.print("Enter client ID: ");
+    int id = sc.nextInt();
+    sc.nextLine();
+
+    for (Client client : clients) {
+        if (client.getId() == id) {
+            System.out.println("ID: " + client.getId());
+            System.out.println("Name: " + client.getName());
+            System.out.println("Phone: " + client.getPhone());
+            System.out.println("Email: " + client.getEmail());
+            return;
+        }
     }
+
+    System.out.println("Client not found.");
 }
 }
