@@ -164,32 +164,57 @@ public class Main {
 
         System.out.println("Book not found.");
     }
+
     public static void updateBook() {
-    System.out.print("Enter book code: ");
-    String code = sc.nextLine();
+        System.out.print("Enter book code: ");
+        String code = sc.nextLine();
 
-    for (Book book : books) {
-        if (book.getCode().equalsIgnoreCase(code)) {
+        for (Book book : books) {
+            if (book.getCode().equalsIgnoreCase(code)) {
 
-            System.out.print("Enter new title: ");
-            book.setTitle(sc.nextLine());
+                System.out.print("Enter new title: ");
+                book.setTitle(sc.nextLine());
 
-            System.out.print("Enter new publication year: ");
-            book.setPublicationYear(sc.nextLine());
+                System.out.print("Enter new publication year: ");
+                book.setPublicationYear(sc.nextLine());
 
-            System.out.print("Enter new author: ");
-            book.setAuthor(sc.nextLine());
+                System.out.print("Enter new author: ");
+                book.setAuthor(sc.nextLine());
 
-            System.out.print("Is the book available? (true/false): ");
-            boolean available = sc.nextBoolean();
-            sc.nextLine();
-            book.setAvailable(available);
+                System.out.print("Is the book available? (true/false): ");
+                boolean available = sc.nextBoolean();
+                sc.nextLine();
+                book.setAvailable(available);
 
-            System.out.println("Book updated successfully.");
-            return;
+                System.out.println("Book updated successfully.");
+                return;
+            }
         }
+
+        System.out.println("Book not found.");
     }
 
-    System.out.println("Book not found.");
-}
+    public static void deleteBook() {
+        System.out.print("Enter book code: ");
+        String code = sc.nextLine();
+
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getCode().equalsIgnoreCase(code)) {
+
+                System.out.print("Are you sure you want to delete this book? (yes/no): ");
+                String confirmation = sc.nextLine();
+
+                if (confirmation.equalsIgnoreCase("yes")) {
+                    books.remove(i);
+                    System.out.println("Book deleted successfully.");
+                } else {
+                    System.out.println("Deletion cancelled.");
+                }
+
+                return;
+            }
+        }
+
+        System.out.println("Book not found.");
+    }
 }
