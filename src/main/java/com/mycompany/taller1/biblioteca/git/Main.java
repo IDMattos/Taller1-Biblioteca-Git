@@ -131,4 +131,14 @@ public static void createBook() {
 
     System.out.println("Book created successfully.");
 }
+public static void listBooks() {
+    for (Book book : books) {
+        System.out.println("Code: " + book.getCode());
+        System.out.println("Title: " + book.getTitle());
+        System.out.println("Publication Year: " + book.getPublicationYear());
+        System.out.println("Author: " + book.getAuthor());
+        System.out.println("Available: " + book.isAvailable());
+        System.out.println("--------------------");
+    }
+}
 }
