@@ -11,7 +11,164 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // Aquí irá el menú
+
+        int option;
+
+        do {
+            System.out.println("\n===== LIBRARY MANAGEMENT SYSTEM =====");
+            System.out.println("1. Client management");
+            System.out.println("2. Book management");
+            System.out.println("3. Loan management");
+            System.out.println("0. Exit");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    clientMenu();
+                    break;
+
+                case 2:
+
+                    bookMenu();
+                    break;
+
+                case 3:
+                    loanMenu();
+                    break;
+
+                case 0:
+                    System.out.println("Exiting application...");
+                    break;
+
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
+    }
+
+    public static void clientMenu() {
+
+        int option;
+
+        do {
+            System.out.println("\n===== CLIENT MANAGEMENT =====");
+            System.out.println("1. Create client");
+            System.out.println("2. List clients");
+            System.out.println("3. Search client");
+            System.out.println("4. Update client");
+            System.out.println("5. Delete client");
+            System.out.println("0. Back");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    createClient();
+                    break;
+                case 2:
+                    listClients();
+                    break;
+                case 3:
+                    searchClient();
+                    break;
+                case 4:
+                    updateClient();
+                    break;
+                case 5:
+                    deleteClient();
+                    break;
+                case 0:
+                    System.out.println("Returning to main menu...");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
+    }
+
+    public static void bookMenu() {
+
+        int option;
+
+        do {
+            System.out.println("\n===== BOOK MANAGEMENT =====");
+            System.out.println("1. Create book");
+            System.out.println("2. List books");
+            System.out.println("3. Search book");
+            System.out.println("4. Update book");
+            System.out.println("5. Delete book");
+            System.out.println("0. Back");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    createBook();
+                    break;
+                case 2:
+                    listBooks();
+                    break;
+                case 3:
+                    searchBook();
+                    break;
+                case 4:
+                    updateBook();
+                    break;
+                case 5:
+                    deleteBook();
+                    break;
+                case 0:
+                    System.out.println("Returning to main menu...");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
+    }
+
+    public static void loanMenu() {
+
+        int option;
+
+        do {
+            System.out.println("\n===== LOAN MANAGEMENT =====");
+            System.out.println("1. Register loan");
+            System.out.println("2. Return loan");
+            System.out.println("3. List loans");
+            System.out.println("0. Back");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    createLoan();
+                    break;
+                case 2:
+                    returnLoan();
+                    break;
+                case 3:
+                    listLoans();
+                    break;
+                case 0:
+                    System.out.println("Returning to main menu...");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
     }
 
     public static void createClient() {
