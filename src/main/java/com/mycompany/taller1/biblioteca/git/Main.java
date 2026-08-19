@@ -7,6 +7,7 @@ public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -216,5 +217,103 @@ public class Main {
         }
 
         System.out.println("Book not found.");
+    }
+
+    public static void createLoan() {
+        System.out.print("Enter loan ID: ");
+        String id = sc.nextLine();
+
+        System.out.print("Enter client ID: ");
+        int clientId = sc.nextInt();
+        sc.nextLine();
+
+        Client selectedClient = null;
+
+        for (Client client : clients) {
+            if (client.getId() == clientId) {
+                selectedClient = client;
+                break;
+            }
+        }
+
+        if (selectedClient == null) {
+            System.out.println("Client not found.");
+            return;
+        }
+
+        System.out.print("Enter book code: ");
+        String bookCode = sc.nextLine();
+
+        Book selectedBook = null;
+
+        for (Book book : books) {
+            if (book.getCode().equalsIgnoreCase(bookCode)) {
+                selectedBook = book;
+                break;
+            }
+        }
+
+        if (selectedBook == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        if (!selectedBook.isAvailable()) {
+            System.out.println("Book is not available.");
+            return;
+        }
+
+        Loan loan = new Loan(
+                id,
+                selectedClient,
+                selectedBook,
+                java.time.LocalDate.now(),
+                "ACTIVE"
+        );
+
+        loans.add(loan);
+
+        selectedBook.setAvailable(false);
+
+        System.out.println("Loan registered successfully.");
+    }
+
+    public static void returnLoan() {
+        System.out.print("Enter loan ID: ");
+        String id = sc.nextLine();
+
+        for (Loan loan : loans) {
+            if (loan.getId().equalsIgnoreCase(id)) {
+
+                if (loan.getStatus().equalsIgnoreCase("RETURNED")) {
+                    System.out.println("Loan has already been returned.");
+                    return;
+                }
+
+                loan.setStatus("RETURNED");
+                loan.getBook().setAvailable(true);
+
+                System.out.println("Loan returned successfully.");
+                return;
+            }
+        }
+
+        System.out.println("Loan not found.");
+    }
+
+    public static void listLoans() {
+        if (loans.isEmpty()) {
+            System.out.println("No loans registered.");
+            return;
+        }
+
+        for (Loan loan : loans) {
+            System.out.println("Loan ID: " + loan.getId());
+            System.out.println("Client: " + loan.getClient().getName());
+            System.out.println("Book: " + loan.getBook().getTitle());
+            System.out.println("Date: " + loan.getDate());
+            System.out.println("Status: " + loan.getStatus());
+            System.out.println("--------------------");
+        }
     }
 }
