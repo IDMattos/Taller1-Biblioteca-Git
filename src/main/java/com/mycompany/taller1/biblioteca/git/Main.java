@@ -36,7 +36,7 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Loan management selected.");
+                    loanMenu();
                     break;
 
                 case 0:
@@ -125,6 +125,41 @@ public class Main {
                     break;
                 case 5:
                     deleteBook();
+                    break;
+                case 0:
+                    System.out.println("Returning to main menu...");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
+    }
+
+    public static void loanMenu() {
+
+        int option;
+
+        do {
+            System.out.println("\n===== LOAN MANAGEMENT =====");
+            System.out.println("1. Register loan");
+            System.out.println("2. Return loan");
+            System.out.println("3. List loans");
+            System.out.println("0. Back");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    createLoan();
+                    break;
+                case 2:
+                    returnLoan();
+                    break;
+                case 3:
+                    listLoans();
                     break;
                 case 0:
                     System.out.println("Returning to main menu...");
