@@ -27,7 +27,7 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    System.out.println("Client management selected.");
+                    clientMenu();
                     break;
 
                 case 2:
@@ -42,6 +42,49 @@ public class Main {
                     System.out.println("Exiting application...");
                     break;
 
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
+    }
+
+    public static void clientMenu() {
+
+        int option;
+
+        do {
+            System.out.println("\n===== CLIENT MANAGEMENT =====");
+            System.out.println("1. Create client");
+            System.out.println("2. List clients");
+            System.out.println("3. Search client");
+            System.out.println("4. Update client");
+            System.out.println("5. Delete client");
+            System.out.println("0. Back");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    createClient();
+                    break;
+                case 2:
+                    listClients();
+                    break;
+                case 3:
+                    searchClient();
+                    break;
+                case 4:
+                    updateClient();
+                    break;
+                case 5:
+                    deleteClient();
+                    break;
+                case 0:
+                    System.out.println("Returning to main menu...");
+                    break;
                 default:
                     System.out.println("Invalid option.");
             }
