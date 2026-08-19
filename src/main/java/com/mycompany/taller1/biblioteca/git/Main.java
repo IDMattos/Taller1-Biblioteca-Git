@@ -7,6 +7,7 @@ public class Main {
 
     static ArrayList<Client> clients = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -217,4 +218,62 @@ public class Main {
 
         System.out.println("Book not found.");
     }
+    public static void createLoan() {
+    System.out.print("Enter loan ID: ");
+    String id = sc.nextLine();
+
+    System.out.print("Enter client ID: ");
+    int clientId = sc.nextInt();
+    sc.nextLine();
+
+    Client selectedClient = null;
+
+    for (Client client : clients) {
+        if (client.getId() == clientId) {
+            selectedClient = client;
+            break;
+        }
+    }
+
+    if (selectedClient == null) {
+        System.out.println("Client not found.");
+        return;
+    }
+
+    System.out.print("Enter book code: ");
+    String bookCode = sc.nextLine();
+
+    Book selectedBook = null;
+
+    for (Book book : books) {
+        if (book.getCode().equalsIgnoreCase(bookCode)) {
+            selectedBook = book;
+            break;
+        }
+    }
+
+    if (selectedBook == null) {
+        System.out.println("Book not found.");
+        return;
+    }
+
+    if (!selectedBook.isAvailable()) {
+        System.out.println("Book is not available.");
+        return;
+    }
+
+    Loan loan = new Loan(
+            id,
+            selectedClient,
+            selectedBook,
+            java.time.LocalDate.now(),
+            "ACTIVE"
+    );
+
+    loans.add(loan);
+
+    selectedBook.setAvailable(false);
+
+    System.out.println("Loan registered successfully.");
+}
 }
