@@ -11,7 +11,42 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // Aquí irá el menú
+
+        int option;
+
+        do {
+            System.out.println("\n===== LIBRARY MANAGEMENT SYSTEM =====");
+            System.out.println("1. Client management");
+            System.out.println("2. Book management");
+            System.out.println("3. Loan management");
+            System.out.println("0. Exit");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    System.out.println("Client management selected.");
+                    break;
+
+                case 2:
+                    System.out.println("Book management selected.");
+                    break;
+
+                case 3:
+                    System.out.println("Loan management selected.");
+                    break;
+
+                case 0:
+                    System.out.println("Exiting application...");
+                    break;
+
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
     }
 
     public static void createClient() {
