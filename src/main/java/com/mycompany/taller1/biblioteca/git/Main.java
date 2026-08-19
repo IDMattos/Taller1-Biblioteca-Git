@@ -300,4 +300,20 @@ public class Main {
 
         System.out.println("Loan not found.");
     }
+
+    public static void listLoans() {
+        if (loans.isEmpty()) {
+            System.out.println("No loans registered.");
+            return;
+        }
+
+        for (Loan loan : loans) {
+            System.out.println("Loan ID: " + loan.getId());
+            System.out.println("Client: " + loan.getClient().getName());
+            System.out.println("Book: " + loan.getBook().getTitle());
+            System.out.println("Date: " + loan.getDate());
+            System.out.println("Status: " + loan.getStatus());
+            System.out.println("--------------------");
+        }
+    }
 }
