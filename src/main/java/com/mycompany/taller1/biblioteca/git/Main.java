@@ -31,7 +31,8 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("Book management selected.");
+
+                    bookMenu();
                     break;
 
                 case 3:
@@ -81,6 +82,49 @@ public class Main {
                     break;
                 case 5:
                     deleteClient();
+                    break;
+                case 0:
+                    System.out.println("Returning to main menu...");
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (option != 0);
+    }
+
+    public static void bookMenu() {
+
+        int option;
+
+        do {
+            System.out.println("\n===== BOOK MANAGEMENT =====");
+            System.out.println("1. Create book");
+            System.out.println("2. List books");
+            System.out.println("3. Search book");
+            System.out.println("4. Update book");
+            System.out.println("5. Delete book");
+            System.out.println("0. Back");
+            System.out.print("Select an option: ");
+
+            option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1:
+                    createBook();
+                    break;
+                case 2:
+                    listBooks();
+                    break;
+                case 3:
+                    searchBook();
+                    break;
+                case 4:
+                    updateBook();
+                    break;
+                case 5:
+                    deleteBook();
                     break;
                 case 0:
                     System.out.println("Returning to main menu...");
